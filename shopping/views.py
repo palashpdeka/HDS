@@ -19,6 +19,6 @@ def add(request):
         new=order.objects.create(user=request.user, item=pro, quantity=qnt, price=qnt*p)
         #new.status=0 #0-on bag, 1-ordered, 2-out for delivery, 3-delivered, 4-cancelled
         new.save()
-        return redirect('home')
+        return redirect('shopping/items')
     else:
         return redirect('shopping/items')

@@ -4,10 +4,13 @@ from django.contrib.auth.models import User,Group
 from django.contrib import auth
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from .decorators import unauth_user
 
+@unauth_user
 def home(request):
-    return render(request,'homepage.html')
+    return render(request,'home.html',{'user':request.user.username})
 
+@unauth_user
 def sign(request):
     if request.method=='POST':
         global name
@@ -24,10 +27,11 @@ def sign(request):
         userid=person.id
         print('User Created')
         auth.login(request, person)
-        return redirect('shopping/items')
+        return redirect('shop/items')
     else:
         return render(request,"signup.html")
 
+@unauth_user
 def log(request):
     if request.method=='POST':
         global name
@@ -39,7 +43,7 @@ def log(request):
         if person is not None:
             auth.login(request,person)
             print('Login successfull')
-            return redirect('shopping/items')
+            return redirect('shop/items')
         else:
             print('Wrong username or password')
             return render(request,'login.html')

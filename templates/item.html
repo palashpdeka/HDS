@@ -183,6 +183,10 @@
         <div class="container">
 
 
+<a href="/logout">Logout</a><br>
+<a href="bag">Bag</a><br><br><br><br><br><br>
+<a href="seeOrders">See orders</a>
+
 {% for pr in product %}
 <div class="row">
   <div class="column">
@@ -197,7 +201,7 @@
           <h3>Quantity:</h3>
             <form action="add" method="post">
                 {% csrf_token %}
-                <input class="input-field" type="number" placeholder="Quantity" value="1" name="quantity">
+                <input class="input-field" type="text" placeholder="Quantity" value="1" name="quantity">
                 <input type="hidden" name="name" value="{{pr.name}}">
                  <button class="addbtn" type="submit"> Add </button>
             </form>

@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Bag</title>
 </head>
 <body>
-$END$
+  Name={{customer.user}}<br>
+  Address={{customer.address}}<br>
+  Phone= {{customer.phn}}<br><br>
+
+  {% for or in orders %}
+  Item: {{or.name}}<br>
+  Quantity: {{or.quantity}}<br>
+  Price: {{or.price}}<br>
+  Time: {{or.date}}<br>
+  <form action="remove" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="id" value="{{or.id}}">
+      <button style="color:red;" type="submit"> Remove </button>
+  </form>
+  <br><br>
+  {% endfor %}
+<form action="order_all" method="post">
+      {% csrf_token %}
+      <button style="color:red;" type="submit"> Order all </button>
+  </form>
+<br><br>
 </body>
 </html>

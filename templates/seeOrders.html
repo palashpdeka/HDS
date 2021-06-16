@@ -2,9 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>seeOrders</title>
 </head>
 <body>
-$END$
+PENDING ORDERS:<br><br>
+{% for us in users %}
+<form action="chkOrdUser" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="usrname" value="{{us}}">
+    <button style="color:blue;" type="submit">{{us}}</button>
+</form>
+<br><br>
+{% endfor %}
+
+{% if cust is not None %}
+Name: {{cust.user}} <br>
+Address: {{cust.address}} <br>
+Phone: {{cust.phn}} <br>
+{% endif %}
+<br><br>
+{% for or in order %}
+Item: {{or.name}}<br>
+Quantity: {{or.quantity}}<br>
+Price: {{or.price}}<br>
+Time: {{or.date}}<br>
+<form action="availability" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="id" value="{{or.id}}">
+      <button style="color:red;" type="submit"> Not Available </button>
+</form><br>
+{% endfor %}
+<br> <br> <br>
+
 </body>
 </html>

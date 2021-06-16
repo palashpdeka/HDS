@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'user_auth.apps.UserAuthConfig',
-    'shopping.apps.ShoppingConfig',
+    'shop.apps.ShopConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,26 +72,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'HDS.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME':'HDS',
-#         'USER':'postgres',
-#         'PASSWORD':'palash',
-#         'HOST':'localhost'
-#     }
-# }
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME':'HDS',
+#        'USER':'postgres',
+#        'PASSWORD':'palash',
+#        'HOST':'localhost'
+#     }}
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase',
-    }
-}
+  'default': {
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': 'mydatabase',
+   }}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

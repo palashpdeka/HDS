@@ -1,1 +1,1 @@
-web: gunicorn HDS.wsgi --log-file -
+web: gunicorn HDS.wsgi
